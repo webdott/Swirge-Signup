@@ -1,38 +1,270 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100;1,400&display=swap');
+
+*, html{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    color: #a5a1a1;
+    font-family: 'Bebas Neue', cursive;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+/* ========= General Styles ========= */
+
+input{
+    background: #e3dede;
+    border: none;
+    padding: .7rem;
+    margin-top: 1.2rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #000000;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+input:focus{
+    outline-color: #f780b5 !important;
+    border-color: #f780b5 !important;
+}
+
+button{
+    margin-top: 1.2rem;
+    padding: 12px 25px;
+    color: #fff;
+    background-color: #DD2476;
+    border: none;
+    border: 1px solid #DD2476;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+button:disabled{
+    opacity: 0.5;
+}
+
+button:disabled:hover{
+    color: #fff;
+    background-color: #DD2476;
+    opacity: 0.5;
+}
+
+button:hover{
+    cursor: pointer;
+    color: #DD2476;
+    background-color: #fff;
+}
+
+button:focus{
+    outline-color: #DD2476 !important;
+    border-color: #DD2476;
+}
+
+h2{
+    font-size: 2rem;
+    color: #000;
+}
+
+p{
+    font-size: 1rem;
+    margin: 0;
+    margin: .2rem auto;
+}
+
+
+/* ========= General Styles End========= */
+
+/* ========= Sections ========= */
+main{
+    width: 100vw;
+    min-height: 100vh;
+    background: #FF512F;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #DD2476, #FF512F);
+    background: linear-gradient(to right, #DD2476, #FF512F);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form__submission__status{
+    color: #fff;
+    margin-top: 3rem;
+}
+
+.form__card{
+    background: #fef8f8;
+    min-width: 320px;
+    width: 50%;
+    margin-top: .5rem;
+    padding: 1.3rem;
+    border-radius: 7px;
+    -moz-box-shadow:    inset 0 0 7px #4b4a4a;
+   -webkit-box-shadow: inset 0 0 7px #4b4a4a;
+   box-shadow:         inset 0 0 7px #4b4a4a;
+}
+
+.form__card:hover{
+    box-shadow:
+        0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+        0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+        0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+        0 100px 80px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+}
+
+form .top{
+    width: 100%;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e3dede;
+
+}
+
+.signup, .login{
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 1s, opacity 1s ease-in-out;
+}
+
+.none{
+    visibility: hidden;
+    display: none;
+    opacity: 0;
+}
+
+form .inputs{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.error__message .fa-check{
+    color: green;
+}
+
+.error__message{
+    color: red;
+    font-size: .7rem;
+}
+
+.fullname{
+    width: 100%;
+    margin-top: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.fullname label{
+    width: 45%;
+}
+
+.fullname input{
+    width: 100%;
+    margin-top: 0;
+}
+
+input{
+    width: 100%;
+}
+
+input[type='checkbox']{
+    width: auto;
+    margin-right: 5px;
+}
+
+.agree{
+    padding-left: 4px;
+    margin-top: 1.2rem;
+    overflow-y: hidden;
+}
+
+.agree label input{
+    margin-top: 0;
+}
+
+.agree label a{
+    text-decoration: none;
+    color: #DD2476;
+    font-weight: 500;
+}
+
+.login__cta{
+    margin-top: 1.5rem;
+    height: auto;
+    color: #fff;
+    display: flex;
+}
+
+.login__cta p, a{
+    margin: 0 auto;
+    text-decoration: none;
+    color: #fff;
+}
+
+a{
+    margin: 0 5px;
+    overflow: hidden;
+    border-bottom: 1px solid #fff;
+}
+
+a:hover{
+    cursor: pointer;
+}
+
+/*===================== CSS Spinner================ */
+.spinner{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(247, 128, 181, 0.7);
+}
+
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #fff;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%, 100% {
+    top: 24px;
+    height: 32px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media screen and (max-width: 700px) {
+    .form__card{
+        width: 80%;
+    }
 }
